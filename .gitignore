@@ -71,4 +71,4 @@ package-lock.json
 # dht-specific
 dht-example
 dht-example.id
-peers/
+nodes/
