@@ -123,6 +123,10 @@ extern const char *inet_ntop(int, const void *, char *, socklen_t);
 #define MAX(x, y) ((x) >= (y) ? (x) : (y))
 #define MIN(x, y) ((x) <= (y) ? (x) : (y))
 
+#ifdef DEBUG_INFO
+#include <netdb.h>
+#endif
+
 struct node {
     unsigned char id[20];
     struct sockaddr_storage ss;
@@ -299,9 +303,11 @@ static int parse_message(const unsigned char *buf, int buflen,
                          struct parsed_message *m);
 
 static const unsigned char zeroes[20] = {0};
+#ifndef ALL_WELCOME
 static const unsigned char v4prefix[16] = {
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xFF, 0xFF, 0, 0, 0, 0
 };
+#endif
 
 static int dht_socket = -1;
 static int dht_socket6 = -1;
@@ -379,6 +385,9 @@ print_hex(FILE *f, const unsigned char *buf, int buflen)
 static int
 is_martian(const struct sockaddr *sa)
 {
+#ifdef ALL_WELCOME
+  return 0;
+#else
     switch(sa->sa_family) {
     case AF_INET: {
         struct sockaddr_in *sin = (struct sockaddr_in*)sa;
@@ -402,6 +411,7 @@ is_martian(const struct sockaddr *sa)
     default:
         return 0;
     }
+#endif
 }
 
 /* Forget about the ``XOR-metric''.  An id is just a path from the
@@ -1765,6 +1775,12 @@ dht_dump_tables(FILE *f)
 int
 dht_init(int s, int s6, const unsigned char *id, const unsigned char *v)
 {
+#ifdef DEBUG_INFO
+  debugf("dht_init id ");
+  print_hex(dht_debug, id, 20);
+  debugf("\n");
+#endif
+ 
     int rc;
 
     if(dht_socket >= 0 || dht_socket6 >= 0 || buckets || buckets6) {
@@ -2032,6 +2048,17 @@ dht_periodic(const void *buf, size_t buflen,
              dht_callback_t *callback, void *closure)
 {
     dht_gettimeofday(&now, NULL);
+
+#ifdef DEBUG_INFO
+    if(!fromlen) goto goon;
+    char host[NI_MAXHOST], service[NI_MAXSERV];
+    int s = getnameinfo((struct sockaddr *) from, fromlen,
+        host, NI_MAXHOST, service, NI_MAXSERV, NI_NUMERICHOST | NI_NUMERICSERV);
+    if (s == 0) printf("Received %zu bytes from %s:%s\n", buflen, host, service);
+    else fprintf(stderr, "getnameinfo: %s\n", gai_strerror(s));
+
+goon:
+#endif
 
     if(buflen > 0) {
         int message;
@@ -2451,7 +2478,15 @@ dht_ping_node(const struct sockaddr *sa, int salen)
 {
     unsigned char tid[4];
 
+#ifdef DEBUG_INFO
+    char host[NI_MAXHOST], service[NI_MAXSERV];
+    int s = getnameinfo(sa, salen,
+        host, NI_MAXHOST, service, NI_MAXSERV, NI_NUMERICHOST | NI_NUMERICSERV);
+    if (s == 0) debugf("Sending ping to %s:%s\n", host, service);
+    else fprintf(stderr, "getnameinfo: %s\n", gai_strerror(s));
+#else
     debugf("Sending ping.\n");
+#endif
     make_tid(tid, "pn", 0);
     return send_ping(sa, salen, tid, 4);
 }
