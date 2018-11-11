@@ -2049,7 +2049,7 @@ dht_periodic(const void *buf, size_t buflen,
 {
     dht_gettimeofday(&now, NULL);
 
-#ifdef DEBUG_TRACEI
+#ifdef DEBUG_TRACE
     if(!fromlen) goto goon;
     char host[NI_MAXHOST], service[NI_MAXSERV];
     int s = getnameinfo((struct sockaddr *) from, fromlen,

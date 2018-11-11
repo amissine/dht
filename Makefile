@@ -33,4 +33,5 @@ run:
 		 ../dht-example -4 -i $$node.id $$PORT 127.0.0.1 $$PORT0 > $$node.out & \
 		fi; \
 	 done; \
-	 popd 
+	 popd; \
+	 ps -ef | grep dht-example 
