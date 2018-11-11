@@ -9,7 +9,7 @@ CFLAGS = -g -Wall -DDEBUG_INFO -DALL_WELCOME
 
 dht-example: dht-example.o dht.o
 
-RECIPES = all clean run
+RECIPES = all clean run run_locally
 
 .PHONY: $(RECIPES)
 
@@ -18,9 +18,23 @@ all: dht-example
 clean:
 	-rm -f dht-example dht-example.o dht-example.id dht.o *~ core
 
+run: run-remote-known_node run-remote-node1 run-local-node
+	@echo "Goals successful: $^"; rm $^
+
+run-remote-known_node:
+	@ssh $(KNOWN_NODE)
+	@echo $@ > $@
+
+run-remote-node1:
+	@echo $@ > $@
+
+run-local-node:
+	@echo $@ > $@
+
 SMALL_CLOUD = node0 node1 node2 node3
-run:
+run_locally:
 	@echo "Run a local cloud with nodes $(SMALL_CLOUD)"
+	@[ -d ./nodes ] || mkdir nodes
 	@pushd nodes; \
 	 for node in $(SMALL_CLOUD); do \
 		if [ $$node = 'node0' ]; then \
