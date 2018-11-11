@@ -5,7 +5,10 @@ $(if $(findstring /,$(MAKEFILE_LIST)),$(error Please only invoke this Makefile f
 SHELL := bash
 
 CFLAGS = -g -Wall -DDEBUG_INFO -DALL_WELCOME
-#LDLIBS = -lcrypt
+UNAME_S := $(shell uname -s)
+ifneq ($(UNAME_S),Darwin)
+LDLIBS = -lcrypt
+endif
 
 dht-example: dht-example.o dht.o
 
@@ -34,6 +37,7 @@ run-local-node:
 SMALL_CLOUD = node0 node1 node2 node3
 run_locally:
 	@echo "Run a local cloud with nodes $(SMALL_CLOUD)"
+	@[ -x ./dht-example ] || make
 	@[ -d ./nodes ] || mkdir nodes
 	@pushd nodes; \
 	 for node in $(SMALL_CLOUD); do \
