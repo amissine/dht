@@ -21,17 +21,23 @@ all: dht-example
 clean:
 	-rm -f dht-example dht-example.o dht-example.id dht.o *~ core
 
-run: run-remote-known_node run-remote-node1 run-local-node
+run: run-lan-hub run-lan-leaf1 run-lan-leaf2 run-lan-local-leaf
 	@echo "Goals successful: $^"; rm $^
 
-run-remote-known_node:
-	@ssh $(KNOWN_NODE)
+run-lan-hub:
+	@ssh $(KNOWN_NODE) "cd product/dht; make run-lan-local-hub"
 	@echo $@ > $@
 
-run-remote-node1:
+run-lan-local-hub:
+	 @echo $@ 
+
+run-lan-leaf1:
 	@echo $@ > $@
 
-run-local-node:
+run-lan-leaf2:
+	@echo $@ > $@
+
+run-lan-local-leaf:
 	@echo $@ > $@
 
 SMALL_CLOUD = node0 node1 node2 node3
