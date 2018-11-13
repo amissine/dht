@@ -12,7 +12,7 @@ endif
 
 dht-example: dht-example.o dht.o
 
-hub: hub.o
+hub: hub.o dht.o
 
 RECIPES = all clean run run_locally
 
