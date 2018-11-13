@@ -12,6 +12,8 @@ endif
 
 dht-example: dht-example.o dht.o
 
+hub: hub.o
+
 RECIPES = all clean run run_locally
 
 .PHONY: $(RECIPES)
@@ -24,12 +26,14 @@ clean:
 run: run-lan-hub run-lan-leaf1 run-lan-leaf2 run-lan-local-leaf
 	@echo "Goals successful: $^"; rm $^
 
+LAN_HUB = 10.0.0.10
 run-lan-hub:
-	@ssh $(KNOWN_NODE) "cd product/dht; make run-lan-local-hub"
+	@ssh $(LAN_HUB) "cd product/dht; make run-lan-local-hub"
 	@echo $@ > $@
 
-run-lan-local-hub:
-	 @echo $@ 
+run-lan-local-hub: hub
+	@PORT=3000; ./hub $$PORT &
+	@echo "$@ started on $(LAN_HUB)"
 
 run-lan-leaf1:
 	@echo $@ > $@
