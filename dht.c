@@ -2050,6 +2050,7 @@ dht_periodic(const void *buf, size_t buflen,
     dht_gettimeofday(&now, NULL);
 
 #ifdef DEBUG_TRACE
+    printf("dht_periodic fromlen %d\n", fromlen);
     if(!fromlen) goto goon;
     char host[NI_MAXHOST], service[NI_MAXSERV];
     int s = getnameinfo((struct sockaddr *) from, fromlen,
@@ -2477,16 +2478,7 @@ int
 dht_ping_node(const struct sockaddr *sa, int salen)
 {
     unsigned char tid[4];
-
-#ifdef DEBUG_INFO
-    char host[NI_MAXHOST], service[NI_MAXSERV];
-    int s = getnameinfo(sa, salen,
-        host, NI_MAXHOST, service, NI_MAXSERV, NI_NUMERICHOST | NI_NUMERICSERV);
-    if (s == 0) debugf("Sending ping to %s:%s\n", host, service);
-    else fprintf(stderr, "getnameinfo: %s\n", gai_strerror(s));
-#else
     debugf("Sending ping.\n");
-#endif
     make_tid(tid, "pn", 0);
     return send_ping(sa, salen, tid, 4);
 }

@@ -12,7 +12,9 @@ endif
 
 dht-example: dht-example.o dht.o
 
-hub: hub.o dht.o
+hub: hub.o dht.o node.o
+
+leaf: leaf.o dht.o node.o
 
 RECIPES = all clean run run_locally
 
@@ -26,14 +28,16 @@ clean:
 run: run-lan-hub run-lan-leaf1 run-lan-leaf2 run-lan-local-leaf
 	@echo "Goals successful: $^"; rm $^
 
-LAN_HUB = 10.0.0.10
+PORT = 3000
+#LAN_HUB = 10.0.0.10
+LAN_HUB = 127.0.0.1
 run-lan-hub:
 	@ssh $(LAN_HUB) "cd product/dht; make run-lan-local-hub"
 	@echo $@ > $@
 
 run-lan-local-hub: hub
-	@PORT=3000; ./hub $$PORT &
-	@echo "$@ started on $(LAN_HUB)"
+	@./hub $(PORT) &
+	@echo "$@ started locally on $(LAN_HUB)"
 
 run-lan-leaf1:
 	@echo $@ > $@
@@ -41,8 +45,9 @@ run-lan-leaf1:
 run-lan-leaf2:
 	@echo $@ > $@
 
-run-lan-local-leaf:
-	@echo $@ > $@
+run-lan-local-leaf: leaf
+	@./leaf $(LAN_HUB) $(PORT) &
+	@echo "$@ started locally, dealing with hub $(LAN_HUB):$(PORT)"
 
 SMALL_CLOUD = node0 node1 node2 node3
 run_locally:

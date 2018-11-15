@@ -36,13 +36,35 @@ static inline int udpFdBnd (const char *port, int options) {
   return fd;
 }
 
-static inline int udpFd (const char *host, const char *port, int options) {
+static inline int udpFd (char **argv, int options,
+    struct sockaddr_storage *bootstrap_node, ssize_t count) {
   struct addrinfo hints, *result, *a;
+  const char *host, *port;
+  int rc, fd;
+  if (!bootstrap_node) goto udpFd_connect;
+
+  fd = socket(AF_INET, SOCK_DGRAM, 0);
+  while (count--) {
+    memset(&hints, 0, sizeof(hints));
+    hints.ai_family = AF_INET; // or AF_INET6 or AF_UNSPEC
+    hints.ai_socktype = SOCK_DGRAM;
+    host = *argv++; port = *argv++;
+    if ((rc = getaddrinfo(host, port, &hints, &result))) {
+      fprintf(stderr, "getaddrinfo rc=%d, %s\n", rc, gai_strerror(rc));
+      exit(EXIT_FAILURE);
+    }
+    for (a = result; a != NULL; a = a->ai_next)
+      memcpy(bootstrap_node++, a->ai_addr, a->ai_addrlen);
+    freeaddrinfo(result);
+  }
+  return fd;
+
+udpFd_connect:
   memset(&hints, 0, sizeof(struct addrinfo));
   hints.ai_family = AF_INET; // or AF_INET6 or AF_UNSPEC
   hints.ai_socktype = SOCK_DGRAM;
+  host = *argv++; port = *argv;
 
-  int rc, fd;
   if ((rc = getaddrinfo(host, port, &hints, &result))) {
     fprintf(stderr, "getaddrinfo rc=%d, %s\n", rc, gai_strerror(rc));
     exit(EXIT_FAILURE);
