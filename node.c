@@ -149,6 +149,9 @@ dht_sendto(int sockfd, const void *buf, int len, int flags,
   int rc = sendto(sockfd, buf, len, flags, to, tolen);
 
 #ifdef DEBUG_INFO
+  char json[1024];
+  bdec((const char *)buf, len, json, sizeof(json));
+  printf("dht_sendto buf:\n%s\n", json);
   char host[NI_MAXHOST], service[NI_MAXSERV];
   int s = getnameinfo(to, tolen,
       host, NI_MAXHOST, service, NI_MAXSERV, NI_NUMERICHOST | NI_NUMERICSERV);

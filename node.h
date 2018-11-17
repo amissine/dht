@@ -11,6 +11,7 @@
 
 #include "udp.h"
 #include "dht.h"
+#include "../bdecode/bdec.h"
 
 void init (int s, unsigned char *myid, struct sockaddr_storage *bootstrap_node);
 void loop (int s, char **argv);

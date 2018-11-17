@@ -5,16 +5,21 @@ $(if $(findstring /,$(MAKEFILE_LIST)),$(error Please only invoke this Makefile f
 SHELL := bash
 
 CFLAGS = -g -Wall -DDEBUG_INFO -DALL_WELCOME
+LFLAGS = -L /opt/local/lib
+LDLIBS = -lstdc++ -lboost_system-mt
 UNAME_S := $(shell uname -s)
 ifneq ($(UNAME_S),Darwin)
-LDLIBS = -lcrypt
+LDLIBS = $(LDLIBS) -lcrypt
 endif
 
 dht-example: dht-example.o dht.o
 
-hub: hub.o dht.o node.o
+hub: hub.o dht.o node.o ../bdecode/bdec.a
 
-leaf: leaf.o dht.o node.o
+leaf: leaf.o dht.o node.o ../bdecode/bdec.a
+
+../bdecode/bdec.a: ../bdecode/bdecode.cpp ../bdecode/bdecode.hpp ../bdecode/bdec.cpp ../bdecode/bdec.h
+	@pushd ../bdecode; make ar; popd
 
 RECIPES = all clean run run_locally
 
@@ -46,7 +51,7 @@ run-lan-leaf2:
 	@echo $@ > $@
 
 run-lan-local-leaf: leaf
-	@./leaf $(LAN_HUB) $(PORT) &
+	@./leaf $(LEAF_PORT) $(LAN_HUB) $(PORT) &
 	@echo "$@ started locally, dealing with hub $(LAN_HUB):$(PORT)"
 
 SMALL_CLOUD = node0 node1 node2 node3

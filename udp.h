@@ -16,7 +16,7 @@ static inline int udpFdBnd (const char *port, int options) {
   memset(&hints, 0, sizeof(struct addrinfo));
   hints.ai_family = AF_INET; // or AF_INET6 or AF_UNSPEC
   hints.ai_socktype = SOCK_DGRAM;
-  hints.ai_flags = AI_PASSIVE;
+//  hints.ai_flags = AI_PASSIVE;
 
   int rc, fd;
   if ((rc = getaddrinfo(NULL, port, &hints, &result))) {
@@ -39,11 +39,11 @@ static inline int udpFdBnd (const char *port, int options) {
 static inline int udpFd (char **argv, int options,
     struct sockaddr_storage *bootstrap_node, ssize_t count) {
   struct addrinfo hints, *result, *a;
-  const char *host, *port;
+  char *host, *port;
   int rc, fd;
   if (!bootstrap_node) goto udpFd_connect;
 
-  fd = socket(AF_INET, SOCK_DGRAM, 0);
+  fd = udpFdBnd(*argv++, options);
   while (count--) {
     memset(&hints, 0, sizeof(hints));
     hints.ai_family = AF_INET; // or AF_INET6 or AF_UNSPEC
