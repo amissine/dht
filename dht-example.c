@@ -19,6 +19,7 @@
 #include <sys/signal.h>
 
 #include "dht.h"
+#include "../bdecode/bdec.h"
 
 #define MAX_BOOTSTRAP_NODES 20
 static struct sockaddr_storage bootstrap_nodes[MAX_BOOTSTRAP_NODES];
@@ -449,11 +450,29 @@ main(int argc, char **argv)
 
 /* Functions called by the DHT. */
 
+#ifdef DEBUG_INFO
+char json[1024];
+#endif
+
 int
 dht_sendto(int sockfd, const void *buf, int len, int flags,
            const struct sockaddr *to, int tolen)
 {
-    return sendto(sockfd, buf, len, flags, to, tolen);
+  int rc = sendto(sockfd, buf, len, flags, to, tolen);
+
+#ifdef DEBUG_INFO
+  bdec((const char *)buf, len, json, sizeof(json));
+  printf("dht_sendto buf:\n%s\n", json);
+  char host[NI_MAXHOST], service[NI_MAXSERV];
+  int s = getnameinfo(to, tolen,
+      host, NI_MAXHOST, service, NI_MAXSERV, NI_NUMERICHOST | NI_NUMERICSERV);
+  if (s == 0)
+    printf("dht_sendto len %d to %s:%s sockfd %d rc %d\n", 
+        len, host, service, sockfd, rc);
+  else fprintf(stderr, "getnameinfo: %s\n", gai_strerror(s));
+#endif
+
+  return rc;
 }
 
 int

@@ -12,7 +12,7 @@ ifneq ($(UNAME_S),Darwin)
 LDLIBS = $(LDLIBS) -lcrypt
 endif
 
-dht-example: dht-example.o dht.o
+dht-example: dht-example.o dht.o ../bdecode/bdec.a
 
 hub: hub.o dht.o node.o ../bdecode/bdec.a
 
@@ -55,7 +55,7 @@ run-lan-local-leaf: leaf
 	@echo "$@ started locally, dealing with hub $(LAN_HUB):$(PORT)"
 
 SMALL_CLOUD = node0 node1 node2 node3
-run_locally:
+run_locally: dht-example
 	@echo "Run a local cloud with nodes $(SMALL_CLOUD)"
 	@[ -x ./dht-example ] || make
 	@[ -d ./nodes ] || mkdir nodes
