@@ -1165,7 +1165,8 @@ search_send_get_peers(struct search *sr, struct search_node *n)
 
     debugf("Sending get_peers.\n");
     make_tid(tid, "gp", sr->tid);
-    send_get_peers((struct sockaddr*)&n->ss, n->sslen, tid, 4, sr->id, -1,
+    send_get_peers((struct sockaddr*)&n->ss, n->sslen, tid, 4, sr->id, 
+        WANT4, // -1,
                    n->reply_time >= now.tv_sec - DHT_SEARCH_RETRANSMIT);
     n->pinged++;
     n->request_time = now.tv_sec;
@@ -2005,7 +2006,7 @@ bucket_maintenance(int af)
                 n = random_node(q);
                 if(n) {
                     unsigned char tid[4];
-                    int want = -1;
+                    int want = WANT4; // -1;
 
                     if(dht_socket >= 0 && dht_socket6 >= 0) {
                         struct bucket *otherbucket;

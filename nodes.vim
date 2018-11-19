@@ -31,7 +31,7 @@ set shortmess=aoO
 badd +1 nodes/node1.out
 badd +1 nodes/node2.out
 badd +113 nodes/node3.out
-badd +0 nodes/node0.out
+badd +1 nodes/node0.out
 argglobal
 silent! argdel *
 $argadd nodes/node1.out
@@ -156,12 +156,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 112 - ((30 * winheight(0) + 23) / 46)
+let s:l = 77 - ((17 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-112
-normal! 014|
+77
+normal! 019|
 tabedit nodes/node2.out
 set splitbelow splitright
 set nosplitbelow
@@ -282,12 +282,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 119 - ((33 * winheight(0) + 23) / 46)
+let s:l = 130 - ((18 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-119
-normal! 0
+130
+normal! 09|
 tabedit nodes/node3.out
 set splitbelow splitright
 set nosplitbelow
@@ -408,12 +408,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 184 - ((39 * winheight(0) + 23) / 46)
+let s:l = 83 - ((18 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-184
-normal! 03|
+83
+normal! 019|
 tabedit nodes/node0.out
 set splitbelow splitright
 set nosplitbelow
@@ -534,13 +534,13 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 23) / 46)
+let s:l = 158 - ((20 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
-tabnext 4
+158
+normal! 019|
+tabnext 2
 set stal=1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
