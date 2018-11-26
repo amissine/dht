@@ -28,19 +28,19 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +77 nodes/node1.out
+badd +1 nodes/node1.out
 badd +130 nodes/node2.out
-badd +83 nodes/node3.out
+badd +1 nodes/node3.out
 badd +158 nodes/node0.out
 badd +1 nodes/node4.out
 badd +1 nodes/node6.out
-badd +0 nodes/node5.out
+badd +1 nodes/node5.out
 badd +1 nodes/node8.out
-badd +0 nodes/node7.out
+badd +1 nodes/node7.out
 badd +1 nodes/node10.out
-badd +0 nodes/node9.out
+badd +1 nodes/node9.out
 badd +1 nodes/node12.out
-badd +0 nodes/node11.out
+badd +1 nodes/node11.out
 argglobal
 silent! argdel *
 $argadd nodes/node1.out
@@ -165,11 +165,11 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 23) / 46)
+let s:l = 243 - ((45 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+243
 normal! 0
 lcd ~/product/dht
 tabedit ~/product/dht/nodes/node1.out
@@ -298,11 +298,11 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 11) / 23)
+let s:l = 117 - ((22 * winheight(0) + 11) / 23)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+117
 normal! 0
 lcd ~/product/dht
 wincmd w
@@ -421,13 +421,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 130 - ((8 * winheight(0) + 10) / 21)
+let s:l = 144 - ((20 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-130
-normal! 09|
+144
+normal! 0
+lcd ~/product/dht
 wincmd w
+2wincmd w
 exe '1resize ' . ((&lines * 23 + 24) / 48)
 exe '2resize ' . ((&lines * 21 + 24) / 48)
 tabedit ~/product/dht/nodes/node3.out
@@ -1725,7 +1727,7 @@ lcd ~/product/dht
 wincmd w
 exe '1resize ' . ((&lines * 23 + 24) / 48)
 exe '2resize ' . ((&lines * 21 + 24) / 48)
-tabnext 7
+tabnext 2
 set stal=1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

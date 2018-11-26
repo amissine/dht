@@ -1,11 +1,11 @@
 #include "node.h"
 
-static volatile sig_atomic_t dumping = 0, searching = 0, exiting = 0;
+static volatile sig_atomic_t announcing = 0, searching = 0, exiting = 0;
 
 static void
-sigdump(int signo)
+sigannounce(int signo)
 {
-    dumping = 1;
+    announcing = 1;
 }
 
 static void
@@ -27,7 +27,7 @@ init_signals(void)
     sigset_t ss;
 
     sigemptyset(&ss);
-    sa.sa_handler = sigdump;
+    sa.sa_handler = sigannounce;
     sa.sa_mask = ss;
     sa.sa_flags = 0;
     sigaction(SIGUSR1, &sa, NULL);
@@ -43,6 +43,12 @@ init_signals(void)
     sa.sa_mask = ss;
     sa.sa_flags = 0;
     sigaction(SIGINT, &sa, NULL);
+
+    sigemptyset(&ss);
+    sa.sa_handler = sigexit;
+    sa.sa_mask = ss;
+    sa.sa_flags = 0;
+    sigaction(SIGTERM, &sa, NULL);
 }
 
 const unsigned char hash[20] = {
@@ -116,7 +122,7 @@ void init (int s, unsigned char *myid, struct sockaddr_storage *bootstrap_node) 
 
 static inline int check_signals (char **argv) {
   if(exiting) {
-    printf("\n%s exiting\n", argv[0]);
+    printf("\n%s %s exiting\n", argv[0], argv[1]);
     return 1;
   }
 
@@ -124,16 +130,20 @@ static inline int check_signals (char **argv) {
      (the second argument) is non-zero, it also performs an announce.
      Since peers expire announced data after 30 minutes, it is a good
      idea to reannounce every 28 minutes or so. */
+  if(announcing) {
+    dht_search(hash, 22, AF_INET, callback, NULL);
+    announcing = 0;
+  }
   if(searching) {
     dht_search(hash, 0, AF_INET, callback, NULL);
     searching = 0;
   }
 
-  /* For debugging, or idle curiosity. */
-  if(dumping) {
-    dht_dump_tables(dht_debug);
-    dumping = 0;
-  }
+//  /* For debugging, or idle curiosity. */
+//  if(dumping) {
+//    dht_dump_tables(dht_debug);
+//    dumping = 0;
+//  }
 
   return 0;
 }
