@@ -1799,7 +1799,7 @@ dht_init(int s, int s6, const unsigned char *id, const unsigned char *v)
         buckets = calloc(1, sizeof(struct bucket));
         if(buckets == NULL)
             return -1;
-        buckets->max_count = 128;
+        buckets->max_count = 8; // 128;
         buckets->af = AF_INET;
     }
 

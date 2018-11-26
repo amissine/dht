@@ -33,7 +33,7 @@ clean:
 run: run-lan-hub run-lan-leaf1 run-lan-leaf2 run-lan-local-leaf
 	@echo "Goals successful: $^"; rm $^
 
-PORT = 3000
+HUB_PORT = 3000
 #LAN_HUB = 10.0.0.10
 LAN_HUB = 127.0.0.1
 run-lan-hub:
@@ -41,8 +41,12 @@ run-lan-hub:
 	@echo $@ > $@
 
 run-lan-local-hub: hub
-	@./hub $(PORT) &
-	@echo "$@ started locally on $(LAN_HUB)"
+	@[ -d ./nodes ] || mkdir nodes
+	@echo "$^ is starting locally on $(LAN_HUB):$(HUB_PORT)"; \
+	 ./$^ $(HUB_PORT) > nodes/node0.out &
+	@echo "  "
+	@echo "  When done with fun, run 'killall -c $^' to kill the hub"
+	@echo "  "
 
 run-lan-leaf1:
 	@echo $@ > $@
@@ -50,17 +54,27 @@ run-lan-leaf1:
 run-lan-leaf2:
 	@echo $@ > $@
 
+LEAF_COUNT = 12
 run-lan-local-leaf: leaf
-	@./leaf $(LEAF_PORT) $(LAN_HUB) $(PORT) &
-	@echo "$@ started locally, dealing with hub $(LAN_HUB):$(PORT)"
+	@[ -d ./nodes ] || mkdir nodes
+	@pushd nodes; let "COUNT = $(LEAF_COUNT)"; \
+	 while [ $$COUNT -gt 0 ]; do \
+	  NODE_OUT="node$$COUNT.out"; let "LEAF_PORT = $(HUB_PORT) + COUNT"; \
+		let "--COUNT"; \
+	  ../$^ $$LEAF_PORT $(LAN_HUB) $(HUB_PORT) > $$NODE_OUT & \
+   done; \
+	 popd; ps -ef | grep $^
+	@echo "  "
+	@echo "  When done with fun, run 'killall -c $^' to kill the leaves"
+	@echo "  "
 
-SMALL_CLOUD = node0 node1 node2 node3
+LOCAL_SWARM = node0 node1 node2 node3 node4 node5 node6 node7 node8 node9 node10 node11
 run_locally: dht-example
-	@echo "Run a local cloud with nodes $(SMALL_CLOUD)"
+	@echo "Run a local cloud with nodes $(LOCAL_SWARM)"
 	@[ -x ./dht-example ] || make
 	@[ -d ./nodes ] || mkdir nodes
 	@pushd nodes; \
-	 for node in $(SMALL_CLOUD); do \
+	 for node in $(LOCAL_SWARM); do \
 		if [ $$node = 'node0' ]; then \
 		 let "PORT = 3000" "PORT0 = PORT"; \
 		 echo "node0, port $$PORT, is the only boostrap node"; \
@@ -72,4 +86,7 @@ run_locally: dht-example
 		fi; \
 	 done; \
 	 popd; \
-	 ps -ef | grep dht-example 
+	 ps -ef | grep dht-example
+	@echo "  "
+	@echo "  When done with fun, run 'killall -c dht-example' to kill the nodes"
+	@echo "  "

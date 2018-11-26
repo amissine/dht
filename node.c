@@ -1,31 +1,54 @@
 #include "node.h"
 
-static volatile sig_atomic_t exiting = 0;
+static volatile sig_atomic_t dumping = 0, searching = 0, exiting = 0;
 
 static void
-sigexit (int signo)
+sigdump(int signo)
+{
+    dumping = 1;
+}
+
+static void
+sigtest(int signo)
+{
+    searching = 1;
+}
+
+static void
+sigexit(int signo)
 {
     exiting = 1;
 }
 
 static void
-init_signals (void)
+init_signals(void)
 {
     struct sigaction sa;
     sigset_t ss;
+
+    sigemptyset(&ss);
+    sa.sa_handler = sigdump;
+    sa.sa_mask = ss;
+    sa.sa_flags = 0;
+    sigaction(SIGUSR1, &sa, NULL);
+
+    sigemptyset(&ss);
+    sa.sa_handler = sigtest;
+    sa.sa_mask = ss;
+    sa.sa_flags = 0;
+    sigaction(SIGUSR2, &sa, NULL);
 
     sigemptyset(&ss);
     sa.sa_handler = sigexit;
     sa.sa_mask = ss;
     sa.sa_flags = 0;
     sigaction(SIGINT, &sa, NULL);
-
-    sigemptyset(&ss);
-    sa.sa_handler = sigexit;
-    sa.sa_mask = ss;
-    sa.sa_flags = 0;
-    sigaction(SIGTERM, &sa, NULL);
 }
+
+const unsigned char hash[20] = {
+    0x54, 0x57, 0x87, 0x89, 0xdf, 0xc4, 0x23, 0xee, 0xf6, 0x03,
+    0x1f, 0x81, 0x94, 0xa9, 0x3a, 0x16, 0x98, 0x8b, 0x72, 0x7b
+};
 
 /* The call-back function is called by the DHT whenever something
    interesting happens.  Right now, it only happens when we get a new value or
@@ -91,6 +114,30 @@ void init (int s, unsigned char *myid, struct sockaddr_storage *bootstrap_node) 
   if (rc < 0) { perror("dht_ping_node"); exit(1); }
 }
 
+static inline int check_signals (char **argv) {
+  if(exiting) {
+    printf("\n%s exiting\n", argv[0]);
+    return 1;
+  }
+
+  /* This is how you trigger a search for a torrent hash.  If port
+     (the second argument) is non-zero, it also performs an announce.
+     Since peers expire announced data after 30 minutes, it is a good
+     idea to reannounce every 28 minutes or so. */
+  if(searching) {
+    dht_search(hash, 0, AF_INET, callback, NULL);
+    searching = 0;
+  }
+
+  /* For debugging, or idle curiosity. */
+  if(dumping) {
+    dht_dump_tables(dht_debug);
+    dumping = 0;
+  }
+
+  return 0;
+}
+
 void loop (int s, char **argv) {
   int rc;
   time_t tosleep = 0;
@@ -112,18 +159,14 @@ void loop (int s, char **argv) {
         sleep(1);
       }
     }
-    if(exiting) {
-      printf("\n%s exiting\n", argv[0]);
-      break;
-    }
-//printf("loop s %d, rc %d\n", s, rc);
+    if (check_signals(argv)) break;
+
     if(rc > 0) {
       fromlen = sizeof(from);
       if(FD_ISSET(s, &readfds))
         rc = recvfrom(s, buf, sizeof(buf) - 1, 0,
                       (struct sockaddr*)&from, &fromlen);
-      else
-        abort();
+      else abort();
     }
     if(rc > 0) {
       buf[rc] = '\0';
@@ -149,9 +192,9 @@ dht_sendto(int sockfd, const void *buf, int len, int flags,
   int rc = sendto(sockfd, buf, len, flags, to, tolen);
 
 #ifdef DEBUG_INFO
-  char json[1024];
-  bdec((const char *)buf, len, json, sizeof(json));
-  printf("dht_sendto buf:\n%s\n", json);
+//  char json[1024];
+//  bdec((const char *)buf, len, json, sizeof(json));
+//  printf("dht_sendto buf:\n%s\n", json);
   char host[NI_MAXHOST], service[NI_MAXSERV];
   int s = getnameinfo(to, tolen,
       host, NI_MAXHOST, service, NI_MAXSERV, NI_NUMERICHOST | NI_NUMERICSERV);
