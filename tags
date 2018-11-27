@@ -1,0 +1,339 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+0	dht.vim	/^normal! 0$/;"	m
+0	nodes.vim	/^normal! 0$/;"	m
+021|	dht.vim	/^normal! 021|$/;"	m
+025|	dht.vim	/^normal! 025|$/;"	m
+035|	dht.vim	/^normal! 035|$/;"	m
+03|	dht.vim	/^normal! 03|$/;"	m
+081|	dht.vim	/^normal! 081|$/;"	m
+<BS>	dht.vim	/^vmap <BS> "-d$/;"	m
+<BS>	nodes.vim	/^vmap <BS> "-d$/;"	m
+<D-c>	dht.vim	/^vmap <D-c> "*y$/;"	m
+<D-c>	nodes.vim	/^vmap <D-c> "*y$/;"	m
+<D-v>	dht.vim	/^map! <D-v> *$/;"	m
+<D-v>	dht.vim	/^nmap <D-v> "*P$/;"	m
+<D-v>	dht.vim	/^vmap <D-v> "-d"*P$/;"	m
+<D-v>	nodes.vim	/^map! <D-v> *$/;"	m
+<D-v>	nodes.vim	/^nmap <D-v> "*P$/;"	m
+<D-v>	nodes.vim	/^vmap <D-v> "-d"*P$/;"	m
+<D-x>	dht.vim	/^vmap <D-x> "*d$/;"	m
+<D-x>	nodes.vim	/^vmap <D-x> "*d$/;"	m
+<Plug>NetrwBrowseX	dht.vim	/^nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx : '<cfile>')),netrw#CheckIfRemote())$/;"	m
+<Plug>NetrwBrowseX	nodes.vim	/^nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx : '<cfile>')),netrw#CheckIfRemote())$/;"	m
+<Plug>NetrwBrowseXVis	dht.vim	/^vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()$/;"	m
+<Plug>NetrwBrowseXVis	nodes.vim	/^vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()$/;"	m
+ADD_V	dht.c	/^#define ADD_V(/;"	d	file:
+ADD_V	dht.c	/^#undef ADD_V$/;"	d	file:
+ANNOUNCE_PEER	dht.c	/^#define ANNOUNCE_PEER /;"	d	file:
+CFLAGS	Makefile	/^CFLAGS = -g -Wall -DDEBUG_INFO -DALL_WELCOME$/;"	m
+CHECK	dht.c	/^#define CHECK(/;"	d	file:
+CHECK	dht.c	/^#undef CHECK$/;"	d	file:
+COPY	dht.c	/^#define COPY(/;"	d	file:
+COPY	dht.c	/^#undef COPY$/;"	d	file:
+CRYPT_HAPPY	dht-example.c	/^#define CRYPT_HAPPY(/;"	d	file:
+CRYPT_HAPPY	node.c	/^#define CRYPT_HAPPY(/;"	d	file:
+DHT_EVENT_NONE	dht.h	/^#define DHT_EVENT_NONE /;"	d
+DHT_EVENT_SEARCH_DONE	dht.h	/^#define DHT_EVENT_SEARCH_DONE /;"	d
+DHT_EVENT_SEARCH_DONE6	dht.h	/^#define DHT_EVENT_SEARCH_DONE6 /;"	d
+DHT_EVENT_VALUES	dht.h	/^#define DHT_EVENT_VALUES /;"	d
+DHT_EVENT_VALUES6	dht.h	/^#define DHT_EVENT_VALUES6 /;"	d
+DHT_H	dht.h	/^#define DHT_H$/;"	d
+DHT_INFLIGHT_QUERIES	dht.c	/^#define DHT_INFLIGHT_QUERIES /;"	d	file:
+DHT_MAX_BLACKLISTED	dht.c	/^#define DHT_MAX_BLACKLISTED /;"	d	file:
+DHT_MAX_HASHES	dht.c	/^#define DHT_MAX_HASHES /;"	d	file:
+DHT_MAX_PEERS	dht.c	/^#define DHT_MAX_PEERS /;"	d	file:
+DHT_MAX_SEARCHES	dht.c	/^#define DHT_MAX_SEARCHES /;"	d	file:
+DHT_SEARCH_EXPIRE_TIME	dht.c	/^#define DHT_SEARCH_EXPIRE_TIME /;"	d	file:
+DHT_SEARCH_RETRANSMIT	dht.c	/^#define DHT_SEARCH_RETRANSMIT /;"	d	file:
+EAFNOSUPPORT	dht.c	/^#define EAFNOSUPPORT /;"	d	file:
+EAFNOSUPPORT	dht.c	/^#undef EAFNOSUPPORT$/;"	d	file:
+ERROR	dht.c	/^#define ERROR /;"	d	file:
+FIND_NODE	dht.c	/^#define FIND_NODE /;"	d	file:
+GET_PEERS	dht.c	/^#define GET_PEERS /;"	d	file:
+HAVE_MEMMEM	dht.c	/^#define HAVE_MEMMEM$/;"	d	file:
+HUB_PORT	Makefile	/^HUB_PORT = 3000$/;"	m
+INC	dht.c	/^#define INC(/;"	d	file:
+INC	dht.c	/^#undef INC$/;"	d	file:
+LAN_HUB	Makefile	/^LAN_HUB = 127.0.0.1$/;"	m
+LDLIBS	Makefile	/^LDLIBS = $(LDLIBS) -lcrypt$/;"	m
+LDLIBS	Makefile	/^LDLIBS = -lstdc++ -lboost_system-mt$/;"	m
+LEAF_COUNT	Makefile	/^LEAF_COUNT = 12$/;"	m
+LFLAGS	Makefile	/^LFLAGS = -L \/opt\/local\/lib$/;"	m
+LOCAL_SWARM	Makefile	/^LOCAL_SWARM = node0 node1 node2 node3 node4 node5 node6 node7 node8 node9 node10 node11$/;"	m
+MAX	dht.c	/^#define MAX(/;"	d	file:
+MAX_BOOTSTRAP_NODES	dht-example.c	/^#define MAX_BOOTSTRAP_NODES /;"	d	file:
+MAX_TOKEN_BUCKET_TOKENS	dht.c	/^#define MAX_TOKEN_BUCKET_TOKENS /;"	d	file:
+MIN	dht.c	/^#define MIN(/;"	d	file:
+MSG_CONFIRM	dht.c	/^#define MSG_CONFIRM /;"	d	file:
+NODE_H	node.h	/^#define NODE_H$/;"	d
+PARSE_NODES6_LEN	dht.c	/^#define PARSE_NODES6_LEN /;"	d	file:
+PARSE_NODES_LEN	dht.c	/^#define PARSE_NODES_LEN /;"	d	file:
+PARSE_TID_LEN	dht.c	/^#define PARSE_TID_LEN /;"	d	file:
+PARSE_TOKEN_LEN	dht.c	/^#define PARSE_TOKEN_LEN /;"	d	file:
+PARSE_VALUES6_LEN	dht.c	/^#define PARSE_VALUES6_LEN /;"	d	file:
+PARSE_VALUES_LEN	dht.c	/^#define PARSE_VALUES_LEN /;"	d	file:
+PING	dht.c	/^#define PING /;"	d	file:
+RECIPES	Makefile	/^RECIPES = all clean run run_locally$/;"	m
+REPLY	dht.c	/^#define REPLY /;"	d	file:
+SEARCH_NODES	dht.c	/^#define SEARCH_NODES /;"	d	file:
+SHELL	Makefile	/^SHELL := bash$/;"	m
+SessionLoad	dht.vim	/^let SessionLoad = 1$/;"	v
+SessionLoad	nodes.vim	/^let SessionLoad = 1$/;"	v
+TOKEN_SIZE	dht.c	/^#define TOKEN_SIZE /;"	d	file:
+UDP_H	udp.h	/^#define UDP_H$/;"	d
+UNAME_S	Makefile	/^UNAME_S := $(shell uname -s)$/;"	m
+WANT4	dht.c	/^#define WANT4 /;"	d	file:
+WANT6	dht.c	/^#define WANT6 /;"	d	file:
+WINVER	dht.c	/^#define WINVER /;"	d	file:
+_GNU_SOURCE	dht-example.c	/^#define _GNU_SOURCE$/;"	d	file:
+_GNU_SOURCE	dht.c	/^#define _GNU_SOURCE$/;"	d	file:
+_GNU_SOURCE	udp.h	/^#define _GNU_SOURCE$/;"	d
+_WIN32_WINNT	dht.c	/^#define _WIN32_WINNT /;"	d	file:
+acked	dht.c	/^    int acked;                  \/* whether they acked our announcement *\/$/;"	m	struct:search_node	file:
+add_search_node	dht.c	/^add_search_node(const unsigned char *id, const struct sockaddr *sa, int salen)$/;"	f	file:
+af	dht.c	/^    int af;$/;"	m	struct:bucket	file:
+af	dht.c	/^    int af;$/;"	m	struct:search	file:
+announcing	node.c	/^static volatile sig_atomic_t announcing = 0, searching = 0, exiting = 0;$/;"	v	file:
+append_nodes	dht.c	/^append_nodes(struct node *n1, struct node *n2)$/;"	f	file:
+blacklist	dht.c	/^static struct sockaddr_storage blacklist[DHT_MAX_BLACKLISTED];$/;"	v	typeref:struct:sockaddr_storage	file:
+blacklist_node	dht.c	/^blacklist_node(const unsigned char *id, const struct sockaddr *sa, int salen)$/;"	f	file:
+bootstrap_nodes	dht-example.c	/^static struct sockaddr_storage bootstrap_nodes[MAX_BOOTSTRAP_NODES];$/;"	v	typeref:struct:sockaddr_storage	file:
+bucket	dht.c	/^struct bucket {$/;"	s	file:
+bucket_maintenance	dht.c	/^bucket_maintenance(int af)$/;"	f	file:
+bucket_middle	dht.c	/^bucket_middle(struct bucket *b, unsigned char *id_return)$/;"	f	file:
+bucket_random	dht.c	/^bucket_random(struct bucket *b, unsigned char *id_return)$/;"	f	file:
+buckets	dht.c	/^static struct bucket *buckets = NULL;$/;"	v	typeref:struct:bucket	file:
+buckets6	dht.c	/^static struct bucket *buckets6 = NULL;$/;"	v	typeref:struct:bucket	file:
+buf	dht-example.c	/^static unsigned char buf[4096];$/;"	v	file:
+buf	node.c	/^static unsigned char buf[4096];$/;"	v	file:
+buffer_closest_nodes	dht.c	/^buffer_closest_nodes(unsigned char *nodes, int numnodes,$/;"	f	file:
+cached	dht.c	/^    struct sockaddr_storage cached;  \/* the address of a likely candidate *\/$/;"	m	struct:bucket	typeref:struct:bucket::sockaddr_storage	file:
+cachedlen	dht.c	/^    int cachedlen;$/;"	m	struct:bucket	file:
+callback	dht-example.c	/^callback(void *closure,$/;"	f	file:
+callback	node.c	/^callback(void *closure,$/;"	f	file:
+check_signals	node.c	/^static inline int check_signals (char **argv) {$/;"	f	file:
+common_bits	dht.c	/^common_bits(const unsigned char *id1, const unsigned char *id2)$/;"	f	file:
+confirm_nodes_time	dht.c	/^static time_t confirm_nodes_time;$/;"	v	file:
+count	dht.c	/^    int count;                  \/* number of nodes *\/$/;"	m	struct:bucket	file:
+debug_printable	dht.c	/^debug_printable(const unsigned char *buf, int buflen)$/;"	f	file:
+debugf	dht.c	/^debugf(const char *format, ...)$/;"	f
+dht_blacklisted	dht-example.c	/^dht_blacklisted(const struct sockaddr *sa, int salen)$/;"	f
+dht_blacklisted	node.c	/^dht_blacklisted(const struct sockaddr *sa, int salen)$/;"	f
+dht_callback_t	dht.h	/^dht_callback_t(void *closure, int event,$/;"	t
+dht_debug	dht.c	/^FILE *dht_debug = NULL;$/;"	v
+dht_dump_tables	dht.c	/^dht_dump_tables(FILE *f)$/;"	f
+dht_get_nodes	dht.c	/^dht_get_nodes(struct sockaddr_in *sin, int *num,$/;"	f
+dht_gettimeofday	dht.c	/^#define dht_gettimeofday(/;"	d	file:
+dht_hash	dht-example.c	/^dht_hash(void *hash_return, int hash_size,$/;"	f
+dht_hash	node.c	/^dht_hash(void *hash_return, int hash_size,$/;"	f
+dht_init	dht.c	/^dht_init(int s, int s6, const unsigned char *id, const unsigned char *v)$/;"	f
+dht_insert_node	dht.c	/^dht_insert_node(const unsigned char *id, struct sockaddr *sa, int salen)$/;"	f
+dht_memmem	dht.c	/^dht_memmem(const void *haystack, size_t haystacklen,$/;"	f	file:
+dht_nodes	dht.c	/^dht_nodes(int af, int *good_return, int *dubious_return, int *cached_return,$/;"	f
+dht_periodic	dht.c	/^dht_periodic(const void *buf, size_t buflen,$/;"	f
+dht_ping_node	dht.c	/^dht_ping_node(const struct sockaddr *sa, int salen)$/;"	f
+dht_random_bytes	dht-example.c	/^dht_random_bytes(void *buf, size_t size)$/;"	f
+dht_random_bytes	node.c	/^dht_random_bytes(void *buf, size_t size)$/;"	f
+dht_search	dht.c	/^dht_search(const unsigned char *id, int port, int af,$/;"	f
+dht_send	dht.c	/^dht_send(const void *buf, size_t len, int flags,$/;"	f	file:
+dht_sendto	dht-example.c	/^dht_sendto(int sockfd, const void *buf, int len, int flags,$/;"	f
+dht_sendto	node.c	/^dht_sendto(int sockfd, const void *buf, int len, int flags,$/;"	f
+dht_socket	dht.c	/^static int dht_socket = -1;$/;"	v	file:
+dht_socket6	dht.c	/^static int dht_socket6 = -1;$/;"	v	file:
+dht_uninit	dht.c	/^dht_uninit()$/;"	f
+done	dht.c	/^    int done;$/;"	m	struct:search	file:
+dump_bucket	dht.c	/^dump_bucket(FILE *f, struct bucket *b)$/;"	f	file:
+dumping	dht-example.c	/^static volatile sig_atomic_t dumping = 0, searching = 0, exiting = 0;$/;"	v	file:
+exiting	dht-example.c	/^static volatile sig_atomic_t dumping = 0, searching = 0, exiting = 0;$/;"	v	file:
+exiting	node.c	/^static volatile sig_atomic_t announcing = 0, searching = 0, exiting = 0;$/;"	v	file:
+expire_buckets	dht.c	/^expire_buckets(struct bucket *b)$/;"	f	file:
+expire_searches	dht.c	/^expire_searches(dht_callback_t *callback, void *closure)$/;"	f	file:
+expire_storage	dht.c	/^expire_storage(void)$/;"	f	file:
+expire_stuff_time	dht.c	/^static time_t expire_stuff_time;$/;"	v	file:
+find_bucket	dht.c	/^find_bucket(unsigned const char *id, int af)$/;"	f	file:
+find_node	dht.c	/^find_node(const unsigned char *id, int af)$/;"	f	file:
+find_search	dht.c	/^find_search(unsigned short tid, int af)$/;"	f	file:
+find_storage	dht.c	/^find_storage(const unsigned char *id)$/;"	f	file:
+first	dht.c	/^    unsigned char first[20];$/;"	m	struct:bucket	file:
+flush_search_node	dht.c	/^flush_search_node(struct search_node *n, struct search *sr)$/;"	f	file:
+gx	dht.vim	/^nmap gx <Plug>NetrwBrowseX$/;"	m
+gx	dht.vim	/^vmap gx <Plug>NetrwBrowseXVis$/;"	m
+gx	nodes.vim	/^nmap gx <Plug>NetrwBrowseX$/;"	m
+gx	nodes.vim	/^vmap gx <Plug>NetrwBrowseXVis$/;"	m
+hash	dht-example.c	/^const unsigned char hash[20] = {$/;"	v
+hash	node.c	/^const unsigned char hash[20] = {$/;"	v
+have_v	dht.c	/^static int have_v = 0;$/;"	v	file:
+id	dht.c	/^    unsigned char id[20];$/;"	m	struct:node	file:
+id	dht.c	/^    unsigned char id[20];$/;"	m	struct:parsed_message	file:
+id	dht.c	/^    unsigned char id[20];$/;"	m	struct:search	file:
+id	dht.c	/^    unsigned char id[20];$/;"	m	struct:search_node	file:
+id	dht.c	/^    unsigned char id[20];$/;"	m	struct:storage	file:
+id_cmp	dht.c	/^id_cmp(const unsigned char *restrict id1, const unsigned char *restrict id2)$/;"	f	file:
+implied_port	dht.c	/^    unsigned short implied_port;$/;"	m	struct:parsed_message	file:
+in_bucket	dht.c	/^in_bucket(const unsigned char *id, struct bucket *b)$/;"	f	file:
+info_hash	dht.c	/^    unsigned char info_hash[20];$/;"	m	struct:parsed_message	file:
+init	node.c	/^void init (int s, unsigned char *myid, struct sockaddr_storage *bootstrap_node) {$/;"	f
+init_signals	dht-example.c	/^init_signals(void)$/;"	f	file:
+init_signals	node.c	/^init_signals(void)$/;"	f	file:
+inline	dht.c	/^#define inline /;"	d	file:
+insert_closest_node	dht.c	/^insert_closest_node(unsigned char *nodes, int numnodes,$/;"	f	file:
+insert_node	dht.c	/^insert_node(struct node *node, struct bucket **split_return)$/;"	f	file:
+insert_search_bucket	dht.c	/^insert_search_bucket(struct bucket *b, struct search *sr)$/;"	f	file:
+insert_search_node	dht.c	/^insert_search_node(const unsigned char *id,$/;"	f	file:
+ip	dht.c	/^    unsigned char ip[16];$/;"	m	struct:peer	file:
+is_martian	dht.c	/^is_martian(const struct sockaddr *sa)$/;"	f	file:
+len	dht.c	/^    unsigned short len;$/;"	m	struct:peer	file:
+loop	node.c	/^void loop (int s, char **argv) {$/;"	f
+lowbit	dht.c	/^lowbit(const unsigned char *id)$/;"	f	file:
+main	dht-example.c	/^main(int argc, char **argv)$/;"	f
+main	hub.c	/^int main (int argc, char **argv) {$/;"	f
+main	leaf.c	/^int main (int argc, char **argv) {$/;"	f
+make_tid	dht.c	/^make_tid(unsigned char *tid_return, const char *prefix, unsigned short seqno)$/;"	f	file:
+make_token	dht.c	/^make_token(const struct sockaddr *sa, int old, unsigned char *token_return)$/;"	f	file:
+max_count	dht.c	/^    int max_count;              \/* max number of nodes for this bucket *\/$/;"	m	struct:bucket	file:
+maxpeers	dht.c	/^    int numpeers, maxpeers;$/;"	m	struct:storage	file:
+my_v	dht.c	/^static unsigned char my_v[9];$/;"	v	file:
+mybucket6_grow_time	dht.c	/^static time_t mybucket_grow_time, mybucket6_grow_time;$/;"	v	file:
+mybucket_grow_time	dht.c	/^static time_t mybucket_grow_time, mybucket6_grow_time;$/;"	v	file:
+myid	dht.c	/^static unsigned char myid[20];$/;"	v	file:
+neighbourhood_maintenance	dht.c	/^neighbourhood_maintenance(int af)$/;"	f	file:
+new_node	dht.c	/^new_node(const unsigned char *id, const struct sockaddr *sa, int salen,$/;"	f	file:
+new_search	dht.c	/^new_search(void)$/;"	f	file:
+next	dht.c	/^    struct bucket *next;$/;"	m	struct:bucket	typeref:struct:bucket::bucket	file:
+next	dht.c	/^    struct node *next;$/;"	m	struct:node	typeref:struct:node::node	file:
+next	dht.c	/^    struct search *next;$/;"	m	struct:search	typeref:struct:search::search	file:
+next	dht.c	/^    struct storage *next;$/;"	m	struct:storage	typeref:struct:storage::storage	file:
+next_blacklisted	dht.c	/^int next_blacklisted;$/;"	v
+node	dht.c	/^struct node {$/;"	s	file:
+node_blacklisted	dht.c	/^node_blacklisted(const struct sockaddr *sa, int salen)$/;"	f	file:
+node_good	dht.c	/^node_good(struct node *node)$/;"	f	file:
+nodes	dht.c	/^    struct node *nodes;$/;"	m	struct:bucket	typeref:struct:bucket::node	file:
+nodes	dht.c	/^    struct search_node nodes[SEARCH_NODES];$/;"	m	struct:search	typeref:struct:search::search_node	file:
+nodes	dht.c	/^    unsigned char nodes[PARSE_NODES_LEN];$/;"	m	struct:parsed_message	file:
+nodes6	dht.c	/^    unsigned char nodes6[PARSE_NODES6_LEN];$/;"	m	struct:parsed_message	file:
+nodes6_len	dht.c	/^    unsigned short nodes6_len;$/;"	m	struct:parsed_message	file:
+nodes_len	dht.c	/^    unsigned short nodes_len;$/;"	m	struct:parsed_message	file:
+now	dht.c	/^static struct timeval now;$/;"	v	typeref:struct:timeval	file:
+num_bootstrap_nodes	dht-example.c	/^static int num_bootstrap_nodes = 0;$/;"	v	file:
+numnodes	dht.c	/^    int numnodes;$/;"	m	struct:search	file:
+numpeers	dht.c	/^    int numpeers, maxpeers;$/;"	m	struct:storage	file:
+numsearches	dht.c	/^static int numsearches;$/;"	v	file:
+numstorage	dht.c	/^static int numstorage;$/;"	v	file:
+oldsecret	dht.c	/^static unsigned char oldsecret[8];$/;"	v	file:
+parse_message	dht.c	/^parse_message(const unsigned char *buf, int buflen,$/;"	f	file:
+parsed_message	dht.c	/^struct parsed_message {$/;"	s	file:
+peer	dht.c	/^struct peer {$/;"	s	file:
+peers	dht.c	/^    struct peer *peers;$/;"	m	struct:storage	typeref:struct:storage::peer	file:
+pinged	dht.c	/^    int pinged;                 \/* how many requests we sent since last reply *\/$/;"	m	struct:node	file:
+pinged	dht.c	/^    int pinged;$/;"	m	struct:search_node	file:
+pinged	dht.c	/^pinged(struct node *n, struct bucket *b)$/;"	f	file:
+pinged_time	dht.c	/^    time_t pinged_time;         \/* time of last request *\/$/;"	m	struct:node	file:
+port	dht.c	/^    unsigned short port;        \/* 0 for pure searches *\/$/;"	m	struct:search	file:
+port	dht.c	/^    unsigned short port;$/;"	m	struct:parsed_message	file:
+port	dht.c	/^    unsigned short port;$/;"	m	struct:peer	file:
+previous_bucket	dht.c	/^previous_bucket(struct bucket *b)$/;"	f	file:
+print_hex	dht.c	/^print_hex(FILE *f, const unsigned char *buf, int buflen)$/;"	f
+print_values	node.c	/^static void print_values (unsigned char *value, int count) {$/;"	f	file:
+random	dht.c	/^random(void)$/;"	f	file:
+random_node	dht.c	/^random_node(struct bucket *b)$/;"	f	file:
+replied	dht.c	/^    int replied;                \/* whether we have received a reply *\/$/;"	m	struct:search_node	file:
+reply_time	dht.c	/^    time_t reply_time;          \/* the time of the last reply *\/$/;"	m	struct:search_node	file:
+reply_time	dht.c	/^    time_t reply_time;          \/* time of last correct reply received *\/$/;"	m	struct:node	file:
+request_time	dht.c	/^    time_t request_time;        \/* the time of the last unanswered request *\/$/;"	m	struct:search_node	file:
+restrict	dht.c	/^#define restrict /;"	d	file:
+rotate_secrets	dht.c	/^rotate_secrets(void)$/;"	f	file:
+rotate_secrets_time	dht.c	/^static time_t rotate_secrets_time;$/;"	v	file:
+s:cpo_save	dht.vim	/^let s:cpo_save=&cpo$/;"	v
+s:cpo_save	nodes.vim	/^let s:cpo_save=&cpo$/;"	v
+s:l	dht.vim	/^let s:l = 1 - ((0 * winheight(0) + 23) \/ 46)$/;"	v
+s:l	dht.vim	/^let s:l = 11 - ((10 * winheight(0) + 23) \/ 46)$/;"	v
+s:l	dht.vim	/^let s:l = 229 - ((0 * winheight(0) + 23) \/ 46)$/;"	v
+s:l	dht.vim	/^let s:l = 2478 - ((22 * winheight(0) + 23) \/ 46)$/;"	v
+s:l	dht.vim	/^let s:l = 4 - ((3 * winheight(0) + 11) \/ 23)$/;"	v
+s:l	dht.vim	/^let s:l = 6 - ((5 * winheight(0) + 10) \/ 21)$/;"	v
+s:l	dht.vim	/^let s:l = 65 - ((18 * winheight(0) + 23) \/ 46)$/;"	v
+s:l	dht.vim	/^let s:l = 78 - ((39 * winheight(0) + 23) \/ 46)$/;"	v
+s:l	nodes.vim	/^let s:l = 1 - ((0 * winheight(0) + 10) \/ 21)$/;"	v
+s:l	nodes.vim	/^let s:l = 1 - ((0 * winheight(0) + 11) \/ 23)$/;"	v
+s:l	nodes.vim	/^let s:l = 117 - ((22 * winheight(0) + 11) \/ 23)$/;"	v
+s:l	nodes.vim	/^let s:l = 144 - ((20 * winheight(0) + 10) \/ 21)$/;"	v
+s:l	nodes.vim	/^let s:l = 243 - ((45 * winheight(0) + 23) \/ 46)$/;"	v
+s:so_save	dht.vim	/^let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0$/;"	v
+s:so_save	nodes.vim	/^let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0$/;"	v
+s:sx	dht.vim	/^let s:sx = expand("<sfile>:p:r")."x.vim"$/;"	v
+s:sx	nodes.vim	/^let s:sx = expand("<sfile>:p:r")."x.vim"$/;"	v
+s:wipebuf	dht.vim	/^  let s:wipebuf = bufnr('%')$/;"	v
+s:wipebuf	nodes.vim	/^  let s:wipebuf = bufnr('%')$/;"	v
+search	dht.c	/^struct search {$/;"	s	file:
+search_id	dht.c	/^static unsigned short search_id;$/;"	v	file:
+search_node	dht.c	/^struct search_node {$/;"	s	file:
+search_send_get_peers	dht.c	/^search_send_get_peers(struct search *sr, struct search_node *n)$/;"	f	file:
+search_step	dht.c	/^search_step(struct search *sr, dht_callback_t *callback, void *closure)$/;"	f	file:
+search_time	dht.c	/^static time_t search_time;$/;"	v	file:
+searches	dht.c	/^static struct search *searches = NULL;$/;"	v	typeref:struct:search	file:
+searching	dht-example.c	/^static volatile sig_atomic_t dumping = 0, searching = 0, exiting = 0;$/;"	v	file:
+searching	node.c	/^static volatile sig_atomic_t announcing = 0, searching = 0, exiting = 0;$/;"	v	file:
+secret	dht.c	/^static unsigned char secret[8];$/;"	v	file:
+send_announce_peer	dht.c	/^send_announce_peer(const struct sockaddr *sa, int salen,$/;"	f
+send_cached_ping	dht.c	/^send_cached_ping(struct bucket *b)$/;"	f	file:
+send_closest_nodes	dht.c	/^send_closest_nodes(const struct sockaddr *sa, int salen,$/;"	f
+send_error	dht.c	/^send_error(const struct sockaddr *sa, int salen,$/;"	f	file:
+send_find_node	dht.c	/^send_find_node(const struct sockaddr *sa, int salen,$/;"	f
+send_get_peers	dht.c	/^send_get_peers(const struct sockaddr *sa, int salen,$/;"	f
+send_nodes_peers	dht.c	/^send_nodes_peers(const struct sockaddr *sa, int salen,$/;"	f
+send_peer_announced	dht.c	/^send_peer_announced(const struct sockaddr *sa, int salen,$/;"	f	file:
+send_ping	dht.c	/^send_ping(const struct sockaddr *sa, int salen,$/;"	f
+send_pong	dht.c	/^send_pong(const struct sockaddr *sa, int salen,$/;"	f
+set_nonblocking	dht-example.c	/^set_nonblocking(int fd, int nonblocking)$/;"	f	file:
+set_nonblocking	node.c	/^set_nonblocking (int fd, int nonblocking)$/;"	f	file:
+sigannounce	node.c	/^sigannounce(int signo)$/;"	f	file:
+sigdump	dht-example.c	/^sigdump(int signo)$/;"	f	file:
+sigexit	dht-example.c	/^sigexit(int signo)$/;"	f	file:
+sigexit	node.c	/^sigexit(int signo)$/;"	f	file:
+sigtest	dht-example.c	/^sigtest(int signo)$/;"	f	file:
+sigtest	node.c	/^sigtest(int signo)$/;"	f	file:
+snprintf	dht.c	/^#define snprintf /;"	d	file:
+split_bucket	dht.c	/^split_bucket(struct bucket *b)$/;"	f	file:
+split_bucket_helper	dht.c	/^split_bucket_helper(struct bucket *b, struct node **nodes_return)$/;"	f	file:
+ss	dht.c	/^    struct sockaddr_storage ss;$/;"	m	struct:node	typeref:struct:node::sockaddr_storage	file:
+ss	dht.c	/^    struct sockaddr_storage ss;$/;"	m	struct:search_node	typeref:struct:search_node::sockaddr_storage	file:
+sslen	dht.c	/^    int sslen;$/;"	m	struct:node	file:
+sslen	dht.c	/^    int sslen;$/;"	m	struct:search_node	file:
+step_time	dht.c	/^    time_t step_time;           \/* the time of the last search_step *\/$/;"	m	struct:search	file:
+storage	dht.c	/^static struct storage *storage;$/;"	v	typeref:struct:storage	file:
+storage	dht.c	/^struct storage {$/;"	s	file:
+storage_store	dht.c	/^storage_store(const unsigned char *id,$/;"	f	file:
+target	dht.c	/^    unsigned char target[20];$/;"	m	struct:parsed_message	file:
+tid	dht.c	/^    unsigned char tid[PARSE_TID_LEN];$/;"	m	struct:parsed_message	file:
+tid	dht.c	/^    unsigned short tid;$/;"	m	struct:search	file:
+tid_len	dht.c	/^    unsigned short tid_len;$/;"	m	struct:parsed_message	file:
+tid_match	dht.c	/^tid_match(const unsigned char *tid, const char *prefix,$/;"	f	file:
+time	dht.c	/^    time_t time;                \/* time of last message received *\/$/;"	m	struct:node	file:
+time	dht.c	/^    time_t time;                \/* time of last reply in this bucket *\/$/;"	m	struct:bucket	file:
+time	dht.c	/^    time_t time;$/;"	m	struct:peer	file:
+token	dht.c	/^    unsigned char token[40];$/;"	m	struct:search_node	file:
+token	dht.c	/^    unsigned char token[PARSE_TOKEN_LEN];$/;"	m	struct:parsed_message	file:
+token_bucket	dht.c	/^token_bucket(void)$/;"	f	file:
+token_bucket_time	dht.c	/^static time_t token_bucket_time;$/;"	v	file:
+token_bucket_tokens	dht.c	/^static int token_bucket_tokens;$/;"	v	file:
+token_len	dht.c	/^    int token_len;$/;"	m	struct:search_node	file:
+token_len	dht.c	/^    unsigned short token_len;$/;"	m	struct:parsed_message	file:
+token_match	dht.c	/^token_match(const unsigned char *token, int token_len,$/;"	f	file:
+udpFd	udp.h	/^static inline int udpFd (char **argv, int options,$/;"	f
+udpFdBnd	udp.h	/^static inline int udpFdBnd (const char *port, int options) {$/;"	f
+uninit	node.c	/^void uninit() {$/;"	f
+v4prefix	dht.c	/^static const unsigned char v4prefix[16] = {$/;"	v	file:
+values	dht.c	/^    unsigned char values[PARSE_VALUES_LEN];$/;"	m	struct:parsed_message	file:
+values6	dht.c	/^    unsigned char values6[PARSE_VALUES6_LEN];$/;"	m	struct:parsed_message	file:
+values6_len	dht.c	/^    unsigned short values6_len;$/;"	m	struct:parsed_message	file:
+values_len	dht.c	/^    unsigned short values_len;$/;"	m	struct:parsed_message	file:
+want	dht.c	/^    unsigned short want;$/;"	m	struct:parsed_message	file:
+xorcmp	dht.c	/^xorcmp(const unsigned char *id1, const unsigned char *id2,$/;"	f	file:
+zeroes	dht.c	/^static const unsigned char zeroes[20] = {0};$/;"	v	file:
+zt	dht.vim	/^normal! zt$/;"	m
+zt	nodes.vim	/^normal! zt$/;"	m

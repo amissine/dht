@@ -56,6 +56,14 @@ const unsigned char hash[20] = {
     0x1f, 0x81, 0x94, 0xa9, 0x3a, 0x16, 0x98, 0x8b, 0x72, 0x7b
 };
 
+static void print_values (unsigned char *value, int count) {
+  debugf("Received %d values: ", count);
+  while (count--) {
+    print_hex(dht_debug, value, 6); value += 6;
+    debugf("%s", count ? " " : "\n");
+  }
+}
+
 /* The call-back function is called by the DHT whenever something
    interesting happens.  Right now, it only happens when we get a new value or
    when a search completes, but this may be extended in future versions. */
@@ -68,7 +76,7 @@ callback(void *closure,
     if(event == DHT_EVENT_SEARCH_DONE)
         printf("Search done.\n");
     else if(event == DHT_EVENT_VALUES)
-        printf("Received %d values.\n", (int)(data_len / 6));
+      print_values((unsigned char *)data, (int)(data_len / 6));
     else
         printf("Unknown DHT event %d.\n", event);
 }

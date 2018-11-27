@@ -352,7 +352,7 @@ FILE *dht_debug = NULL;
 #ifdef __GNUC__
     __attribute__ ((format (printf, 1, 2)))
 #endif
-static void
+void
 debugf(const char *format, ...)
 {
     va_list args;
@@ -374,7 +374,7 @@ debug_printable(const unsigned char *buf, int buflen)
     }
 }
 
-static void
+void
 print_hex(FILE *f, const unsigned char *buf, int buflen)
 {
     int i;
@@ -953,6 +953,9 @@ new_node(const unsigned char *id, const struct sockaddr *sa, int salen,
         if(mybucket && !dubious) {
             int rc;
             rc = split_bucket(b);
+#ifdef DEBUG_INFO
+            dht_dump_tables(dht_debug);
+#endif
             if(rc > 0)
                 goto again;
             return NULL;

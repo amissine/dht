@@ -66,6 +66,10 @@ void dht_hash(void *hash_return, int hash_size,
               const void *v3, int len3);
 int dht_random_bytes(void *buf, size_t size);
 
+// am
+void debugf (const char *format, ...);
+void print_hex (FILE *f, const unsigned char *buf, int buflen);
+
 #ifdef __cplusplus
 }
 #endif
